@@ -12,6 +12,9 @@ public class StockData {
     @JsonProperty("Meta Data")
     private MetaData metaData;
 
+    @JsonProperty("Time Series (60min)")
+    private TimeSeries timeSeries;
+
     public StockData() {
 
     }
@@ -24,10 +27,19 @@ public class StockData {
         this.metaData = metaData;
     }
 
+    public TimeSeries getTimeSeries() {
+        return timeSeries;
+    }
+
+    public void setTimeSeries(TimeSeries timeSeries) {
+        this.timeSeries = timeSeries;
+    }
+
     @Override
     public String toString() {
         return "StockData{" +
                 "metaData=" + metaData +
+                ", timeSeries=" + timeSeries +
                 '}';
     }
 }
