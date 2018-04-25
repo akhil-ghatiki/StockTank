@@ -1,5 +1,6 @@
 package dataModel;
 
+import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.LinkedHashMap;
@@ -32,7 +33,7 @@ public class StockData {
     @JsonProperty("Meta Data")
     private MetaData metaData;
 
-    @JsonProperty("Time Series (60min)")
+    @JsonAlias({"Time Series (60min)", "Time Series (15min)", "Time Series (1min)", "Time Series (Daily)"})
     private LinkedHashMap<String,StockDetails> timeSeries;
 
     public StockData() {

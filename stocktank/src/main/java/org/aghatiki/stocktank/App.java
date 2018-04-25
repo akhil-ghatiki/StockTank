@@ -24,6 +24,11 @@ public class App
     public static void main( String[] args )
     {
 
+        /*This below code snippet LOC-32 till LOC-56 is to handle suppressing the certificate trust manager.
+         * This has to be used when you are calling the alpha vantage API from a private network i.e., VPN.
+         * If you are calling the API using a public network you can ignore this part of code.
+         * */
+
         TrustStrategy acceptingTrustStrategy = (X509Certificate[] chain, String authType) -> true;
 
         SSLContext sslContext = null;
