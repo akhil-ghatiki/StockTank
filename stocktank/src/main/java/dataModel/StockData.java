@@ -2,6 +2,8 @@ package dataModel;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.util.LinkedHashMap;
+
 /**
  * @author akhil_ghatiki
  * @date 4/15/2018
@@ -9,11 +11,29 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class StockData {
 
+    /**
+     * {
+     * "Meta Data": {
+     * <Data>
+     * },
+     * "Time Series (15min)": {
+     * "2018-04-24 16:00:00": {
+     * <Data>
+     * },
+     * "2018-04-24 15:45:00": {
+     * <Data>
+     * },
+     * "2018-04-24 15:30:00": {
+     * <Data>
+     * }
+     * ----more such keys----
+     */
+
     @JsonProperty("Meta Data")
     private MetaData metaData;
 
     @JsonProperty("Time Series (60min)")
-    private TimeSeries timeSeries;
+    private LinkedHashMap<String,StockDetails> timeSeries;
 
     public StockData() {
 
@@ -27,11 +47,11 @@ public class StockData {
         this.metaData = metaData;
     }
 
-    public TimeSeries getTimeSeries() {
+    public LinkedHashMap<String,StockDetails> getTimeSeries() {
         return timeSeries;
     }
 
-    public void setTimeSeries(TimeSeries timeSeries) {
+    public void setTimeSeries(LinkedHashMap<String, StockDetails> timeSeries) {
         this.timeSeries = timeSeries;
     }
 

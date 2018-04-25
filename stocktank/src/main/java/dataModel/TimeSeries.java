@@ -1,6 +1,10 @@
 package dataModel;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
+import com.fasterxml.jackson.annotation.JsonAnySetter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import java.util.LinkedHashMap;
 
 /**
  * @author akhil_ghatiki
@@ -17,29 +21,23 @@ public class TimeSeries {
             "4. close": "93.0800",
             "5. volume": "7628444"
         }*/
-
-    /*ObjectMapper mapper;
-
-    Map<LocalDate,StockDetails> map;
-
-    public TimeSeries(){
-        mapper = new ObjectMapper();
-        mapper.registerModule(new JavaTimeModule());
-    }*/
-
     //@JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "yyyy-MM-dd hh:mm:ss")
-    @JsonProperty("2018-04-13 16:00:00")
-    private StockDetails stockDetails;
+    //@JsonProperty("2018-04-13 16:00:00")
+    @JsonIgnore
+    private LinkedHashMap<String, StockDetails> stockDetails = new LinkedHashMap<>();  // LinkedHashMap are being used to maintain the insertion order of the data.
+    // You can go with just HashMap if insertion is not important.
 
     public TimeSeries() {
 
     }
 
-    public StockDetails getStockDetails() {
+    @JsonAnyGetter
+    public LinkedHashMap<String, StockDetails> getStockDetails() {
         return stockDetails;
     }
 
-    public void setStockDetails(StockDetails stockDetails) {
+    @JsonAnySetter
+    public void setStockDetails(LinkedHashMap<String, StockDetails> stockDetails) {
         this.stockDetails = stockDetails;
     }
 
