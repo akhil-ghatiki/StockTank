@@ -1,4 +1,4 @@
-package dataModel;
+package org.aghatiki.stocktank.dataModel;
 
 import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonProperty;
