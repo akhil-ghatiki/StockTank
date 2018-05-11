@@ -1,5 +1,6 @@
 package org.aghatiki.stocktank.dataModel;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
@@ -16,6 +17,7 @@ public class StockDetails {
             "4. close": "93.0800",
             "5. volume": "7628444"
         }*/
+
     @JsonProperty("1. open")
     private String Open;
 
@@ -34,54 +36,64 @@ public class StockDetails {
     public StockDetails() {
     }
 
+    @JsonIgnore
     public String getOpen() {
         return Open;
     }
 
+    @JsonIgnore
     public void setOpen(String open) {
         Open = open;
     }
 
+    @JsonIgnore
     public String getHigh() {
         return High;
     }
 
+    @JsonIgnore
     public void setHigh(String high) {
         High = high;
     }
 
+    @JsonIgnore
     public String getLow() {
         return Low;
     }
 
+    @JsonIgnore
     public void setLow(String low) {
         Low = low;
     }
 
+    @JsonIgnore
     public String getClose() {
         return Close;
     }
 
+    @JsonIgnore
     public void setClose(String close) {
         Close = close;
     }
 
+    @JsonIgnore
     public String getVolume() {
         return Volume;
     }
 
+    @JsonIgnore
     public void setVolume(String volume) {
         Volume = volume;
     }
 
     @Override
     public String toString() {
-        return "StockDetails{" +
-                "Open='" + Open + '\'' +
-                ", High='" + High + '\'' +
-                ", Low='" + Low + '\'' +
-                ", Close='" + Close + '\'' +
-                ", Volume='" + Volume + '\'' +
+        return "{" +
+                "\"Open\":\"" + Open + '\"' +
+                ",\"High\":\"" + High + '\"' +
+                ",\"Low\":\"" + Low + '\"' +
+                ",\"Close\":\"" + Close + '\"' +
+                ",\"Volume\":\"" + Volume + '\"' +
                 '}';
     }
 }

@@ -1,5 +1,6 @@
 package org.aghatiki.stocktank.dataModel;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
@@ -28,27 +29,29 @@ public class MetaData {
 
     }
 
+    @JsonIgnore
     public String getInformation() {
         return Information;
     }
 
+    @JsonIgnore
     public void setInformation(String information) {
         Information = information;
     }
 
+    @JsonIgnore
     public String getSymbol() {
         return Symbol;
     }
 
+    @JsonIgnore
     public void setSymbol(String symbol) {
         Symbol = symbol;
     }
 
     @Override
     public String toString() {
-        return "MetaData{" +
-                "Information='" + Information + '\'' +
-                ", Symbol='" + Symbol + '\'' +
-                '}';
+        return "\"Information\":\"" + Information + '\"' +
+                ", \"Symbol\":\"" + Symbol + '\"';
     }
 }

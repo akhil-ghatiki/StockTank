@@ -58,9 +58,9 @@ public class StockData {
 
     @Override
     public String toString() {
-        return "StockData{" +
-                "metaData=" + metaData +
-                ", timeSeries=" + timeSeries +
+        return "{" +
+                "\"metaData\":" + "{" + metaData + "}" +
+                ", \"timeSeries\":" + "[" + timeSeries + "]" +
                 '}';
     }
 }

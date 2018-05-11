@@ -43,8 +43,6 @@ public class TimeSeries {
 
     @Override
     public String toString() {
-        return "TimeSeries{" +
-                "stockDetails=" + stockDetails +
-                '}';
+        return "stockDetails:" + stockDetails;
     }
 }

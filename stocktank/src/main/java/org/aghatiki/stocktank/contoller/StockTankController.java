@@ -5,6 +5,7 @@ import org.aghatiki.stocktank.stockTankProperties.DataSource;
 import org.aghatiki.stocktank.utilities.Utils;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -23,8 +24,9 @@ public class StockTankController {
      * The request parameters are picked from the url for Ex: "http://localhost:8080/allstocks?symbol=MSFT&interval=60min" passes symbol = "MSFT" and interval = "60min" into below method
      * @return
      */
+    @CrossOrigin(origins = "http://10.91.116.104:9090")
     @RequestMapping(value = "/allstocks")
-    public ResponseEntity<StockData> getAllStockData(@RequestParam(value = "symbol", defaultValue = "") String symbol, @RequestParam(value = "interval", defaultValue = "60min") String interval) {
+    public ResponseEntity<StockData> getAllStockData(@RequestParam(value = "symbol", defaultValue = "MSFT") String symbol, @RequestParam(value = "interval", defaultValue = "60min") String interval) {
         RestTemplate restTemplate = new RestTemplate(Utils.getInstance().getRequestFactory());
         StockData stockData = restTemplate.getForObject("https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=" + symbol + "&interval=" + interval + "&apikey=VASRSC36ZU68PYMD", StockData.class);
         DataSource.getInstance().setStockData(stockData);
